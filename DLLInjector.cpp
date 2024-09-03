@@ -10,10 +10,9 @@ DWORD GetProcessId(const char* procName)
 	if (hSnap != INVALID_HANDLE_VALUE) {
 		PROCESSENTRY32 procEntry;
 		procEntry.dwSize = sizeof(procEntry);
-
 		if (Process32First(hSnap, &procEntry)) {
 			do {
-				if (! _stricmp(procEntry.szExeFile, procName)) {
+				if (! _stricmp((const char*)procEntry.szExeFile, procName)) {
 
 					procId = procEntry.th32ProcessID;
 					break;
