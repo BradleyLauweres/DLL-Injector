@@ -2,6 +2,11 @@
 #include <Windows.h>
 #include <TlHelp32.h>
 
+void Display();
+
+std::string PathToDLL;
+int PIDToInject = 0;
+
 DWORD GetProcessId(const char* procName) 
 {
 	DWORD procId = 0;
@@ -40,13 +45,20 @@ int main()
 		return 1;
 	}
 
-	int PIDToInject = 0;
-	std::cout << "Please enter the PID from the procces u want to inject to" << std::endl;
-	std::cin >> PIDToInject;
+	Display();
 
 	return 0;
 
 
+
+}
+
+void Display() {
+
+	std::cout << "Please provide the absolute path to the DLL file" << std::endl;
+	std::cin >> PathToDLL;
+	std::cout << "Please enter the PID from the procces u want to inject to" << std::endl;
+	std::cin >> PIDToInject;
 
 }
 
